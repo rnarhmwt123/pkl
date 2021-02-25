@@ -181,9 +181,9 @@
                                         <tr>
                                             <th>{{$no++}}</th>
                                             <th>{{$data->nama_provinsi}}
-                                            <th>{{$data->Positive}}
-                                            <th>{{$data->Sembuh}}
-                                            <th>{{$data->Meninggal}}  
+                                            <th>{{$data->positive}}
+                                            <th>{{$data->sembuh}}
+                                            <th>{{$data->meninggal}}  
                                         </tr>
                                         @endforeach
                                     </tbody>

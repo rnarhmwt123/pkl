@@ -32,19 +32,20 @@ class ReportController extends Controller
                     'Meninggal' => $datal['attributes']['Deaths']
                   ];
                 }
- 
-    $tampil = DB::table('provinsis')
-            ->select('provinsis.kode_provinsi','provinsis.nama_provinsi',
-            DB::raw('SUM(trackings.sembuh) as Sembuh'),
-            DB::raw('SUM(trackings.positive) as Positive'),
-            DB::raw('SUM(trackings.meninggal) as Meninggal'))
-                ->join('kotas','provinsis.id','=','kotas.id_provinsi')
-                ->join('kecamatans','kotas.id','=','kecamatans.id_kota')
-                ->join('kelurahans','kecamatans.id','=','kelurahans.id_kecamatan')
-                ->join('rws','kelurahans.id','=','rws.id_kelurahan')
-                ->join('trackings','rws.id','=','trackings.id_rw')
-            ->groupBy('provinsis.id')->get();
 
+      $tampil = DB::table('provinsis')
+                  ->select('provinsis.id', 'provinsis.nama_provinsi', 'provinsis.kode_provinsi',
+                      DB::raw('sum(trackings.positive) as positive'),
+                      DB::raw('sum(trackings.sembuh) as sembuh'),
+                      DB::raw('sum(trackings.meninggal) as meninggal'))
+                  ->join('kotas', 'provinsis.id', '=', 'kotas.id_provinsi')
+                  ->join('kecamatans', 'kotas.id', '=', 'kecamatans.id_kota')
+                  ->join('kelurahans', 'kecamatans.id', '=', 'kelurahans.id_kecamatan')
+                  ->join('rws', 'kelurahans.id', '=', 'rws.id_kelurahan')
+                  ->join('trackings', 'rws.id', '=', 'trackings.id_rw')
+                  ->groupBy('provinsis.id')
+                  ->get();
+        // dd($tampil);
             
 
             return view('frontend', compact('sembuh','positive','meninggal','tampil','data'));
