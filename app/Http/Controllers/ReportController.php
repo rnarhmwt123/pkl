@@ -15,20 +15,11 @@ class ReportController extends Controller
     //
     public function index()
     {
-     $sembuh = DB::table('rws')
-              ->select('trackings.sembuh',
-              'trackings.positive','trackings.meninggal')
-              ->join('trackings','rws.id','=','trackings.id_rw')
+     $sembuh = DB::table('trackings')
               ->sum('trackings.sembuh');
-     $positive = DB::table('rws')
-              ->select('trackings.sembuh',
-              'trackings.positive','trackings.meninggal')
-              ->join('trackings','rws.id','=','trackings.id_rw')
+     $positive = DB::table('trackings')
               ->sum('trackings.positive');
-    $meninggal = DB::table('rws')
-              ->select('trackings.sembuh',
-              'trackings.positive','trackings.meninggal')
-              ->join('trackings','rws.id','=','trackings.id_rw')
+    $meninggal = DB::table('trackings')
               ->sum('trackings.meninggal');  
 
               $data = [];
