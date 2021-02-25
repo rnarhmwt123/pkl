@@ -16,11 +16,11 @@ class ReportController extends Controller
     public function index()
     {
      $sembuh = DB::table('trackings')
-              ->sum('trackings.sembuh');
+              ->sum('sembuh');
      $positive = DB::table('trackings')
-              ->sum('trackings.positive');
+              ->sum('positive');
     $meninggal = DB::table('trackings')
-              ->sum('trackings.meninggal');  
+              ->sum('meninggal');  
 
               $data = [];
                 $response = Http::get('https://api.kawalcorona.com/')->json();
