@@ -16,9 +16,9 @@ class CreateTrackingsTable extends Migration
         Schema::create('trackings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_rw');
-            $table->int('sembuh');
-            $table->int('positive');
-            $table->int('meninggal');
+            $table->integer('sembuh');
+            $table->integer('positive');
+            $table->integer('meninggal');
             $table->date('tanggal');
             $table->foreign('id_rw')->references('id')
                   ->on('rws')->onDelete('cascade');
