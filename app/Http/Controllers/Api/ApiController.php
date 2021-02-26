@@ -152,20 +152,20 @@ class ApiController extends Controller
 
            
             return response([
-                'success' => true,
-                'data' => ['Data provinsi' => $provinsi,
-                'total' => [
-                  'Jumlah Sembuh' => $sembuh,
-                  'Jumlah Positive' => $positive,
-                  'Jumlah Meninggal' => $meninggal,
-                ],
-                'hari ini' => $today
-                          ],
-               
-                'message' => 'Berhasil'
-            ], 200);       
-          }
-
+              'success' => true,
+              'data' => ['Data provinsi' => $provinsi,
+              'total' => [
+                [
+                'Jumlah Sembuh' => $sembuh,
+                'Jumlah Positive' => $positive,
+                'Jumlah Meninggal' => $meninggal,
+              ],
+              'hari ini' => $today
+                        ],
+                      ],
+              'message' => 'Berhasil'
+          ], 200);       
+        }
           public function provinsiid($id)
           {
             $provinsiid = DB::table('provinsis')
