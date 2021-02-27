@@ -30,12 +30,12 @@ class ApiController extends Controller
         $meninggal = DB::table('trackings')
             ->sum('trackings.meninggal');        
 
-            $this->data = [
+            $this->data = [[
               'name' => 'Indonesia',
               'positif' => $positive,
               'sembuh' => $sembuh,
               'meninggal' => $meninggal,
-          ];
+            ],];
   
           $data = [
               'success' => true,
