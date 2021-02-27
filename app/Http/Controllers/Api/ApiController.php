@@ -21,33 +21,30 @@ class ApiController extends Controller
     //
     public function index()
     {
-     $sembuh = DB::table('rws')
-              ->select('trackings.sembuh',
-              'trackings.positive','trackings.meninggal')
-              ->join('trackings','rws.id','=','trackings.id_rw')
-              ->sum('trackings.sembuh');
-     $positive = DB::table('rws')
-              ->select('trackings.sembuh',
-              'trackings.positive','trackings.meninggal')
-              ->join('trackings','rws.id','=','trackings.id_rw')
-              ->sum('trackings.positive');
-    $meninggal = DB::table('rws')
-              ->select('trackings.sembuh',
-              'trackings.positive','trackings.meninggal')
-              ->join('trackings','rws.id','=','trackings.id_rw')
-              ->sum('trackings.meninggal');        
+      $positive = DB::table('trackings')
+            ->sum('trackings.positive');
 
-    $res = [
-          'success'         => true,
-          'Data'            => 'Data kasus Indonesia',
-          'Jumlah Sembuh' => $sembuh,
-          'Jumlah Positive'   => $positive,
-          'Jumlah meninggal'=> $meninggal,
-    ];
-    
-    return response()->json($res,200);
+        $sembuh = DB::table('trackings')
+            ->sum('trackings.sembuh');
 
-            }
+        $meninggal = DB::table('trackings')
+            ->sum('trackings.meninggal');        
+
+            $this->data = [
+              'name' => 'Indonesia',
+              'positif' => $positive,
+              'sembuh' => $sembuh,
+              'meninggal' => $meninggal,
+          ];
+  
+          $data = [
+              'success' => true,
+              'data' => $this->data,
+              'message' => 'berhasil',
+          ];
+          return response()->json($data, 200);
+      }
+            
           
 
     public function rw()
