@@ -8,6 +8,8 @@ use App\Http\Controllers\KelurahanController;
 use App\Http\Controllers\RwController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\BerandaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +37,7 @@ Auth::routes();
 
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'admin'])->name('home');
 
+                Route::resource('/dasbor', Berandacontroller::class);   
 
                 Route::resource('/provinsi', Provinsicontroller::class);
                

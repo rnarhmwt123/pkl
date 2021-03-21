@@ -9,7 +9,7 @@
           </div>
           <!-- <p>CT</p> -->
         </a>
-        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+        <a  class="simple-text logo-normal">
           Erna Rahmawati
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
@@ -19,7 +19,7 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="#">
+            <a href="/dasbor">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
@@ -58,12 +58,6 @@
             <a href="/tracking">
               <i class="nc-icon nc-caps-small"></i>
               <p>Tracking</p>
-            </a>
-          </li>
-          <li class="active-pro">
-            <a href="./upgrade.html">
-              <i class="nc-icon nc-spaceship"></i>
-              <p>Upgrade to PRO</p>
             </a>
           </li>
         </ul>

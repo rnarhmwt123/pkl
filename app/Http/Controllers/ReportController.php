@@ -22,16 +22,7 @@ class ReportController extends Controller
     $meninggal = DB::table('trackings')
               ->sum('meninggal');  
 
-              $data = [];
-                $response = Http::get('https://api.kawalcorona.com/')->json();
-                foreach ($response as $datal) {
-                  $data[] = [
-                    'Negara' => $datal['attributes']['Country_Region'],
-                    'Positive' => $datal['attributes']['Confirmed'],
-                    'Sembuh' => $datal['attributes']['Recovered'],
-                    'Meninggal' => $datal['attributes']['Deaths']
-                  ];
-                }
+             
 
       $tampil = DB::table('provinsis')
                   ->select('provinsis.id', 'provinsis.nama_provinsi', 'provinsis.kode_provinsi',
@@ -48,7 +39,7 @@ class ReportController extends Controller
         // dd($tampil);
             
 
-            return view('frontend', compact('sembuh','positive','meninggal','tampil','data'));
+            return view('frontend', compact('sembuh','positive','meninggal','tampil'));
     }
 
     

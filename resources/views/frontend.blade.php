@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> Hosting | Teamplate</title>
+    <title> Tracking | Covid</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -49,7 +49,6 @@
                     <div class="menu-wrapper d-flex align-items-center justify-content-between">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="index.html"><img src="{{asset('fastes/assets/img/logo/logo.png')}}" alt=""></a>
                         </div>
                         <!-- Main-menu -->
                         
@@ -87,17 +86,7 @@
         </div>
         <!--Hero Area End-->
         <!--? Pricing Card Start -->
-        <?php
-        $Sembuh = 0;
-        $Meninggal = 0;
-        $Positif = 0;
-
-        foreach($data as $key){
-        $Sembuh +=    $key['Sembuh'];
-        $Meninggal += $key['Meninggal'];
-        $Positif +=   $key['Positive'];
-        }
-
+       
         ?>
         <section class="pricing-card-area">
             <div class="container">
@@ -106,13 +95,10 @@
                         <div class="single-card text-center mb-30">
                             <div class="card-top">
                                 <img src="{{asset('fastes/assets/img/gallery/price1.png')}}" alt="">
-                                <h4>Indonesia</h4>
+                                <h4>Sembuh</h4>
                             </div>
                             <div class="card-mid">
                                 <h4>{{$sembuh}} <span>/ indonesia</span></h4>
-                                <h4>{{$positive}} <span>/ indonesia</span></h4>
-                                <h4>{{$meninggal}} <span>/Indonesia </span></h4>
-
                             </div>
                            
                         </div>
@@ -122,37 +108,28 @@
                         <div class="single-card text-center mb-30">
                             <div class="card-top">
                                 <img src="{{asset('fastes/assets/img/gallery/price1.png')}}" alt="">
-                                <h4>Sembuh Dunia</h4>
+                                <h4>Positive</h4>
                             </div>
                             <div class="card-mid">
-                                <h4> {{$Sembuh}}<span>/Dunia </span></h4>
+                                <h4>{{$positive}} <span>/ indonesia</span></h4>
                             </div>
-                            </div>
-                            </div>
+                           
+                        </div>
+                    </div>
 
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-10">
                         <div class="single-card text-center mb-30">
                             <div class="card-top">
                                 <img src="{{asset('fastes/assets/img/gallery/price1.png')}}" alt="">
-                                <h4>Meninggal Dunia</h4>
+                                <h4>Meninggal</h4>
                             </div>
                             <div class="card-mid">
-                                <h4> {{$Meninggal}}<span>/Dunia </span></h4>
+                                <h4>{{$meninggal}} <span>/ indonesia</span></h4>
                             </div>
-                            </div>
-                            </div>
+                           
+                        </div>
+                    </div>
 
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-10" >
-                        <div class="single-card text-center mb-30">
-                            <div class="card-top">
-                                <img src="{{asset('fastes/assets/img/gallery/price1.png')}}" alt="">
-                                <h4>Positive Dunia</h4>
-                            </div>
-                            <div class="card-mid">
-                                <h4> {{$Positif}}<span>/Dunia </span></h4>
-                            </div>
-                            </div>
-                            </div>
                            
                         </div>
                     </div>
@@ -193,61 +170,9 @@
                         </div>
                     </div>
 
-                    <?php
-        $datapositif = file_get_contents("https://api.kawalcorona.com/positif");
-        $positif = json_decode($datapositif, TRUE);
-        $datasembuh = file_get_contents("https://api.kawalcorona.com/sembuh");
-        $sembuh = json_decode($datasembuh, TRUE);
-        $datameninggal = file_get_contents("https://api.kawalcorona.com/meninggal");
-        $meninggal = json_decode($datameninggal, TRUE);
-        $dataid = file_get_contents("https://api.kawalcorona.com/indonesia");
-        $id = json_decode($dataid, TRUE);
-        $datadunia= file_get_contents("https://api.kawalcorona.com/");
-        $dunia = json_decode($datadunia, TRUE);
-        
-    ?>
+                
 
-                    <div class="card-header ">
-                    <h3 class="card-title" align="center">Data Kasus Corona virus Global</h3>
-                    </div>
-                     <div class="card-body" >
-                         <div style="height:600px;overflow:auto;margin-right:15px;">
-                                 <table class="table table-striped"  fixed-header  >
-                                 <thead>
-                                     <tr>
-                                     <th scope="col">No</th>
-                                     <th scope="col">Negara</th>
-                                     <th scope="col">Positif</th>
-                                     <th scope="col">Sembuh</th>
-                                     <th scope="col">Meninggal</th>
-                                     </tr>
-                                 </thead>
-                                 <tbody>
-             
-                                 @php
-                                     $no = 1;    
-                                 @endphp
-                                 <?php
-                                     for ($i= 0; $i <= 191; $i++){
-             
-                                     
-                                     ?>
-                                 <tr>
-                                     <td> <?php echo $i+1 ?></td>
-                                     <td> <?php echo $dunia[$i]['attributes']['Country_Region'] ?></td>
-                                     <td> <?php echo $dunia[$i]['attributes']['Confirmed'] ?></td>
-                                     <td><?php echo $dunia[$i]['attributes']['Recovered']?></td>
-                                     <td><?php echo $dunia[$i]['attributes']['Deaths']?></td>
-                                 </tr>
-                                     <?php 
-                                 
-                                 } ?>
-                                 </tbody>
-                                 </table>
-                                 </tbody>
-                                 </table>
-                          </div>
-                   </div>
+                  
        
             <section class="load-balancing  pt-top section-bg2" data-background="{{asset('fastesassets/img/gallery/section_bg01.png')}}">
             <div class="container">
