@@ -1,4 +1,3 @@
-@extends('layouts.app')
 
 @section('content')
 @endsection
@@ -24,7 +23,6 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="{{asset('colorlib/images/signin-image.jpg')}}" alt="sing up image"></figure>
-                        <a href="#" class="signup-image-link">Create an account</a>
                     </div>
 
                     <div class="signin-form">

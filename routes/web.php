@@ -25,6 +25,7 @@ use App\Http\Controllers\BerandaController;
 Route::resource('/', Reportcontroller::class,);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes(['register' => false]);
 //Route::view('/test', 'admin.index');
 // Route::group(['middleware' => ['auth']],
 //             function () {
@@ -33,7 +34,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //                     return view('layouts.master');
 //                 });
 
-Auth::routes();
 
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'admin'])->name('home');
 
